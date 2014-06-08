@@ -1,0 +1,19 @@
+{
+    "name": "todolist",
+    "description": "Todolist",
+    "version": "0.9.1",
+    "private": true,
+    "scripts": {
+        "start": "node app.js"
+    },
+    "dependencies": {
+        "express": "*",
+        "errorhandler": "*",
+        "body-parser": "*",
+        "method-override": "*",
+        "jade": "*",
+        "mongodb": "*",
+        "mongojs": "*",
+        "morgan": "*"
+    }
+}

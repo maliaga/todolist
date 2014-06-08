@@ -1,0 +1,21 @@
+//
+   Created by awunnenb on 27.11.13.
+
+// Startseite
+extends layout
+block content
+    h2= title
+    ul#actions(data-role="listview",data-filter="true", data-filter-placeholder="Filter", data-inset="true")
+        - each action in actions
+            li(id=action._id)
+                a(href="/edit/#{action._id}")
+                    h3= action.subject
+                    p
+                        span= action.who
+                        span , &nbsp
+                        span= action.category
+                        span , &nbsp
+                    p=  action.note
+                    p(class="ui-li-aside")
+                        strong= action.datetime
+                    a(href="/delete/#{action._id}",data-theme="a", data-icon="delete") Löschen

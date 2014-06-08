@@ -1,0 +1,27 @@
+//
+   Created by awunnenb on 27.11.13.
+
+extends layout
+block content
+    h2= title
+        form( method="post", data-ajax="false", action="/save")
+            ul(data-role="listview", data-inset="true")
+                li(data-role="fieldcontain")
+                    label(for="subject") Betreff
+                    input(id="subject", type="text", name="subject", maxlength="150")
+                li(data-role="fieldcontain")
+                    label(for="date") Datum
+                    input(id="datetime", type="datetime-local", data-role="date", name="datetime")
+                li(data-role="fieldcontain")
+                    label(for="note") Notiz
+                    textarea(name="note",cols="40", rows="8", id="note")
+                li(data-role="fieldcontain")
+                    label(for="who") Wer
+                    input(id="who", type="text", name="who", maxlength="150")
+                li(data-role="fieldcontain")
+                    label(for="category") Kategorie
+                    select(id="category", name="category", data-inline="true", data-native-menu="false" )
+                        each item in categories
+                            option(value="#{item.name}") #{item.name}
+            input(type="submit", value="Speichern", data-icon="check", data-inline="true")
+            a(href="/home", data-role="button", data-icon="back",data-rel="back", data-inline="true") zurück

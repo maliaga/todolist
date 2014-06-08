@@ -1,0 +1,14 @@
+//
+   Created by awunnenb on 27.11.13.
+
+extends layout
+block content
+    h3 Datensatz wirklich löschen?
+    form( method="post", data-ajax="false", action="/remove/#{action._id}")
+        p= action.subject
+        p= action.created
+        p= action.who
+        p= action.category
+        br
+        input(type="submit", value="Löschen", data-icon="delete", data-inline="true")
+        a(href="/home", data-role="button", data-icon="back", data-rel="back", data-inline="true") zurück

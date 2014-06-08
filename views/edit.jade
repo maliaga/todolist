@@ -1,0 +1,30 @@
+//
+   Created by awunnenb on 27.11.13.
+
+extends layout
+block content
+    h2= title
+        form(method="post", data-ajax="false", action="/save/#{action._id}")
+            // Button zum setzen des Status auf erledigt
+            a(href="/done/#{action._id}", data-role="button", data-icon="check", data-inline="true") ToDo erledigt
+            // Listview
+            ul(data-role="listview", data-inset="true")
+                li(data-role="fieldcontain")
+                    label(for="subject") Betreff
+                    input(id="subject", type="text", name="subject", maxlength="150", value=action.subject)
+                li(data-role="fieldcontain")
+                    label(for="date") Datum
+                    input(id="date", type="datetime-local", name="datetime", maxlength="10", value=action.datetime)
+                li(data-role="fieldcontain")
+                    label(for="note") Notiz
+                    textarea(name="note", id="note") #{action.note}
+                li(data-role="fieldcontain")
+                    label(for="who") Wer
+                    input(id="who", type="text", name="who", maxlength="150", value=action.who)
+                li(data-role="fieldcontain")
+                    label(for="category") Kategorie
+                    select(id="category", name="category", data-inline="true", data-native-menu="false")
+                        each item in categories
+                           option(value="#{item.name}", selected=item.name==action.category) #{item.name}
+            input(type="submit", value="Speichern", data-icon="check", data-inline="true")
+            a(href="/home", data-role="button", data-icon="back",data-rel="back", data-inline="true") zurück
