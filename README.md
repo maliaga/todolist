@@ -1,5 +1,4 @@
 todolist
 ========
 
-Torte's TodoList
-
+Node.js, Express.js, MongoDB, Jade and jQuery Mobile Example
