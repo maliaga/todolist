@@ -8,20 +8,25 @@ var app = express();
 var routes = require('./routes');
 var http = require('http');
 var bodyParser = require('body-parser');
-var errorHandler = require('errorhandler');
 var methodOverride = require('method-override');
-var morgan  = require('morgan')
+
 
 // Settings
 app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 
-app.use(morgan('dev'));             // log every request to the console
 app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());         // pull information from html in POST
 app.use(methodOverride());          // simulate DELETE and PUT
-app.use(errorHandler())
+
+var env = process.env.NODE_ENV || 'development';
+if ('development' == env) {
+    var morgan = require('morgan'); // log every request to the console
+    var errorHandler = require('errorhandler');
+    app.use(morgan('dev'));
+    app.use(errorHandler());
+}
 
 // Routes
 app.get('/', routes.index);
