@@ -5,7 +5,8 @@
 
 // Database mongodb
 // mongod muss vorher in der Console oder als Service gestartet sein
-var databaseUrl = "todolist"; // optional: "username:password@localhost/todolist"
+var databaseUrl = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || "mongodb://localhost";
+// var databaseUrl = "todolist"; // optional: "username:password@localhost/todolist"
 var collections = ["actions", "categories"]
 var db = require("mongojs").connect(databaseUrl, collections);
 
